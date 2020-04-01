@@ -16,7 +16,6 @@ def DL_MP3(search):
     for vid in soup.find_all(attrs={"class": "yt-uix-tile-link"}):
         if counter < 1:
             counter = counter + 1
-            global final_url
             final_url = str("https://www.youtube.com" + vid["href"])
             os.system(
                 "youtube-dl -o 'Musik/%(title)s.%(ext)s' --no-playlist --playlist-items 1 -x --audio-format mp3 "
@@ -33,7 +32,6 @@ def DL_MP4(search):
     for vid in soup.find_all(attrs={"class": "yt-uix-tile-link"}):
         if counter < 1:
             counter = counter + 1
-            global final_url
             final_url = str("https://www.youtube.com" + vid["href"])
             os.system(
                 "youtube-dl -o 'Video/%(title)s.%(ext)s' --no-playlist --playlist-items 1 --recode-video mp4 "
