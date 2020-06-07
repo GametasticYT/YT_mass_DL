@@ -5,7 +5,6 @@ import urllib.request
 from bs4 import BeautifulSoup
 
 
-
 def DL_MP3(search):
     query = urllib.parse.quote(search)
     url = "https://www.youtube.com/results?search_query=" + query
@@ -22,6 +21,7 @@ def DL_MP3(search):
                 + final_url
             )
 
+
 def DL_MP4(search):
     query = urllib.parse.quote(search)
     url = "https://www.youtube.com/results?search_query=" + query
@@ -34,14 +34,30 @@ def DL_MP4(search):
             counter = counter + 1
             final_url = str("https://www.youtube.com" + vid["href"])
             os.system(
-                "youtube-dl -o 'Video/%(title)s.%(ext)s' --no-playlist --playlist-items 1 --recode-video mp4 "
+                "youtube-dl -o 'Video/%(title)s.%(ext)s' --no-playlist --playlist-items 1 "
                 + final_url
             )
+
+
+def DL_MP3url(search):
+    os.system(
+        "youtube-dl -o 'Musik/%(title)s.%(ext)s' --no-playlist --playlist-items 1 "
+        + search
+    )
+
+
+def DL_MP4url(search):
+    os.system(
+        "youtube-dl -o 'Video/%(title)s.%(ext)s' --no-playlist --playlist-items 1 "
+        + search
+    )
 
 
 def main():
     print("1.Audio")
     print("2.Video")
+    print("3.UrlAudio")
+    print("4.UrlVideo")
 
     choice = int(input("Choice: "))
 
@@ -56,6 +72,17 @@ def main():
         for x in videos:
             DL_MP4(x)
         videos.close
-    
+    if(choice == 3):
+        songs = open("songs.txt")
+        for x in songs:
+            DL_MP3url(x)
+        songs.close
+    if(choice == 4):
+        videos = open("videos.txt")
+        for x in videos:
+            DL_MP4url(x)
+        videos.close
+
+
 if __name__ == "__main__":
     main()
