@@ -17,7 +17,7 @@ def DL_MP3(search):
             counter = counter + 1
             final_url = str("https://www.youtube.com" + vid["href"])
             os.system(
-                "youtube-dl -o 'Musik/%(title)s.%(ext)s' --no-playlist --playlist-items 1 -x --audio-format mp3 "
+                "youtube-dl -o Musik/%(title)s.%(ext)s --no-playlist --playlist-items 1 -x --audio-format mp3 "
                 + final_url
             )
 
@@ -34,21 +34,21 @@ def DL_MP4(search):
             counter = counter + 1
             final_url = str("https://www.youtube.com" + vid["href"])
             os.system(
-                "youtube-dl -o 'Video/%(title)s.%(ext)s' --no-playlist --playlist-items 1 "
+                "youtube-dl -o Video/%(title)s.%(ext)s --no-playlist --playlist-items 1 "
                 + final_url
             )
 
 
 def DL_MP3url(search):
     os.system(
-        "youtube-dl -o 'Musik/%(title)s.%(ext)s' --no-playlist --playlist-items 1 "
+        "youtube-dl -o Musik/%(title)s.%(ext)s --no-playlist --playlist-items 1 "
         + search
     )
 
 
 def DL_MP4url(search):
     os.system(
-        "youtube-dl -o 'Video/%(title)s.%(ext)s' --no-playlist --playlist-items 1 "
+        "youtube-dl -o Video/%(title)s.%(ext)s --no-playlist --playlist-items 1 "
         + search
     )
 
