@@ -41,14 +41,14 @@ def DL_MP4(search):
 
 def DL_MP3url(search):
     os.system(
-        "youtube-dl -o Musik/%(title)s.%(ext)s --no-playlist --playlist-items 1 "
+        "youtube-dl -o Musik/%(title)s.%(ext)s -x --audio-format mp3 "
         + search
     )
 
 
 def DL_MP4url(search):
     os.system(
-        "youtube-dl -o Video/%(title)s.%(ext)s --no-playlist --playlist-items 1 "
+        "youtube-dl -o Video/%(title)s.%(ext)s "
         + search
     )
 
